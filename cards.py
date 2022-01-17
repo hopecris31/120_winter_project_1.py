@@ -1,20 +1,31 @@
-"""
-shuffle deck
-take first 5 cards and make hand
-pop those cards the deck
-take 5 more cards until cant make another hand of 5
-"""
 
-"""
-flush =
-#flush, straight flush, royal flush
-two_pair =
-#two pair, four of a kind, full house
-pair =
-#pair, three of a kind
-high_card =
-#high card, straight
-"""
+
+
+def create_card(rank, suit):
+    """
+
+    :param rank: (string)...
+    :param suit: (string)...
+    :return: (string)...
+    """
+    card = rank+suit
+    return card
+
+def identify_rank(card):
+    """
+
+    :param card:
+    :return:
+    """
+    return card[0]
+
+def identify_suit(card):
+    """
+
+    :param card:
+    :return:
+    """
+    return card[1]
 
 
 """
