@@ -10,6 +10,7 @@ def create_hands(deck):
     start = 0
     end = 5
     del deck[0:2]
+    #ask what to do about the remaining 2 cards in deck
     dealt_hands = []
 
     for cards in deck[:10]:
@@ -51,6 +52,8 @@ two_pair = []
 pair = []
 high_card = []
 
+flush = ['AS', 'QS', '4S', '3S', '5S']
+
 def check_flush(hand):
     first_suit = cards.identify_suit(hand[0])
     for card in hand:
@@ -60,12 +63,45 @@ def check_flush(hand):
 
 
 
+"""
+def check_two_pair(hand):
+    first_rank = cards.identify_rank(hand[0])
+    for card in hand:
+        index = 1
+        if first_rank == cards.identify_rank(card[index]):
+            index += 1
+            if cards.identify_rank(card[index]) == cards.identify_rank(card[index + 1]):
+                return True
+"""
+
+
+pHand = ['2H', '3D', '4D', '5H', 'JD']
 
 def check_two_pair(hand):
-    pass
+    """
+    compare first card with second, third, fourth then fifth card
+    :param hand: a list of 5 cards
+    :return: True if there is a two pair, four of a kind, or full house
+    """
+    first_rank = cards.identify_rank(hand[0])
+    for card in hand:
+        index = 1
+        if first_rank != cards.identify_rank(card[index]):
+            index += 1
+        return True
+    #returns true all the time
+    return False
 
-def check_pair(hand):
-    pass
+
+
+
+
+
+
+#def check_pair(hand):
+#    first_rank = cards.identify_rank(hand[0])
+#    for card in hand:
+
 
 def check_high_card(hand):
     pass
@@ -74,4 +110,5 @@ def check_high_card(hand):
 print(deck.create_deck())
 # print(create_hands2(shuffle_deck()))
 print(create_hands(deck.create_deck()))
-print(check_flush(deck.create_deck()))
+print(check_flush(flush))
+print(check_two_pair(pHand))
