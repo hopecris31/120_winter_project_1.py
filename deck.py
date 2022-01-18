@@ -27,6 +27,3 @@ def shuffle(deck):
     return deck
 
 
-print(create_deck())
-print(shuffle(create_deck()))
-

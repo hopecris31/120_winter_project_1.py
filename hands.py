@@ -75,7 +75,7 @@ def check_two_pair(hand):
 """
 
 
-pHand = ['2H', '3D', '4D', '5H', 'JD']
+pHand = ['5C', '3D', '5D', '5H', '3H']
 
 def check_two_pair(hand):
     """
@@ -83,6 +83,26 @@ def check_two_pair(hand):
     :param hand: a list of 5 cards
     :return: True if there is a two pair, four of a kind, or full house
     """
+
+    pairs = {}
+
+    for card in hand:
+        if card[0] not in pairs:
+            pairs[card[0]] = 0
+        pairs[card[0]] += 1
+
+    print(pairs)
+
+
+print(check_two_pair(pHand))
+
+"""
+def check_two_pair(hand):
+    
+
+    :param hand: a list of 5 cards
+    :return: True if there is a two pair, four of a kind, or full house
+    
     first_rank = cards.identify_rank(hand[0])
     for card in hand:
         index = 1
@@ -91,9 +111,7 @@ def check_two_pair(hand):
         return True
     #returns true all the time
     return False
-
-
-
+"""
 
 
 pairHand = ['AH', '2D', '4D', '5S', '3S'] #test variable
@@ -109,7 +127,7 @@ def check_pair(hand):
 
     for i in range(5):
         for j in range(i + 1, 5):
-            print(cards.identify_rank(hand[i]), cards.identify_rank(hand[j]))
+            #print(cards.identify_rank(hand[i]), cards.identify_rank(hand[j]))
             if cards.identify_rank(hand[i]) != cards.identify_rank(hand[j]):
                 j += 1
 ##need to fix this to return false if there are no pairs, but return true works properly
@@ -135,4 +153,4 @@ def check_high_card(hand):
 #print(check_flush(flush))
 #print(check_two_pair(pHand))
 #print(check_pair(pairHand))
-print(check_high_card(pairHand))
+#print(check_high_card(pairHand))
