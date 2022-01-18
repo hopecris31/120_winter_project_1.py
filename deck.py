@@ -3,7 +3,7 @@ import cards
 
 def create_deck():
     """
-
+    creates a deck of cards by combining one of each rank and suit
     :return: deck of 52 cards as list
     """
     deck = []
@@ -19,7 +19,7 @@ def create_deck():
 
 def shuffle(deck):
     """
-    creates and shuffles a deck of cards
+    shuffles a deck of cards
     :return: the shuffled deck of cards as a list
     """
 
