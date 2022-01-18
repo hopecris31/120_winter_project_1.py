@@ -1,40 +1,6 @@
+
 import cards
 import deck
-
-def create_hands(deck):
-    """
-
-    :param deck:
-    :return:
-    """
-    start = 0
-    end = 5
-    del deck[0:2]
-    #ask what to do about the remaining 2 cards in deck
-    dealt_hands = []
-
-    for cards in deck[:10]:
-        hand = deck[start:end]
-        dealt_hands.append(hand)
-        start += 5
-        end += 5
-
-    return dealt_hands
-
-
-def create_hand(deck):
-    """
-
-    :param deck:
-    :return:
-    """
-
-    dealt_cards = []
-
-    for index in range(0,5):
-        dealt_cards.append(deck[index]) #dealing individual cards
-
-    return dealt_cards
 
 """
 flush =
@@ -47,12 +13,49 @@ high_card =
 #high card, straight
 """
 
-flush = []
-two_pair = []
-pair = []
-high_card = []
 
-flush = ['AS', 'QS', '4S', '3S', '5S']
+
+
+def create_hands(deck):
+    """
+
+    :param deck:
+    :return:
+    """
+    start = 0
+    end = 5
+    del deck[0:2]
+    #ask what to do about the remaining 2 cards in deck, delete or not
+    dealt_hands = []
+
+    for cards in deck[:10]:
+        hand = deck[start:end]
+        dealt_hands.append(hand)
+        start += 5
+        end += 5
+
+    return dealt_hands
+
+
+
+
+def create_hand(deck):
+    """
+    :param deck:
+    :return:
+    """
+
+    dealt_cards = []
+
+    for index in range(0,5):
+        dealt_cards.append(deck[index]) #dealing individual cards
+
+    return dealt_cards
+
+
+
+
+flush = ['AS', 'QS', '4S', '3S', '5S'] #test variable
 
 def check_flush(hand):
     first_suit = cards.identify_suit(hand[0])
@@ -63,66 +66,43 @@ def check_flush(hand):
 
 
 
-"""
-def check_two_pair(hand):
-    first_rank = cards.identify_rank(hand[0])
-    for card in hand:
-        index = 1
-        if first_rank == cards.identify_rank(card[index]):
-            index += 1
-            if cards.identify_rank(card[index]) == cards.identify_rank(card[index + 1]):
-                return True
-"""
 
-
-pHand = ['5C', '3D', '5D', '5H', '3H']
+pHand = ['KC', 'KD', 'KD', '4H', '2S']
 
 def check_two_pair(hand):
     """
-
+    iterates through hand, creates dict and stores values for number of rank appearances.
     :param hand: a list of 5 cards
     :return: True if there is a two pair, four of a kind, or full house
     """
-
     pairs = {}
 
     for card in hand:
         if card[0] not in pairs:
             pairs[card[0]] = 0
         pairs[card[0]] += 1
-
-    print(pairs)
-
+        print(pairs)
+    for cardCount in pairs.values():
+        if cardCount >= 2:
+            print(pairs)
+            return True
+        else:
+            return False
+#returns true when it is a regular pair. need help w that
 
 print(check_two_pair(pHand))
 
-"""
-def check_two_pair(hand):
-    
 
-    :param hand: a list of 5 cards
-    :return: True if there is a two pair, four of a kind, or full house
-    
-    first_rank = cards.identify_rank(hand[0])
-    for card in hand:
-        index = 1
-        if first_rank != cards.identify_rank(card[index]):
-            index += 1
-        return True
-    #returns true all the time
-    return False
-"""
 
 
 pairHand = ['AH', '2D', '4D', '5S', '3S'] #test variable
 
 def check_pair(hand):
-
     """
-    checks hand, iterates one pair at a time and tries all card combinations.
+    checks hand, iterates one pair at a time and tries all card combinations for pairs.
     if pair is found, returns True.
     :param hand: hand of 5 cards (list)
-    :return: True when a pair is detected
+    :return: True when a pair or three of a kind is detected
     """
 
     for i in range(5):
@@ -139,7 +119,6 @@ def check_pair(hand):
 
 def check_high_card(hand):
     """
-
     :param hand: hand of 5 cards (list)
     :return:
     """
