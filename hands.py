@@ -13,6 +13,10 @@ high_card =
 #high card, straight
 """
 
+pairHand = ['4H', '2D', '4D', 'KS', 'AS'] #test variable
+flush = ['AS', 'QS', '4S', '3S', '5S'] #test variable
+pHand = ['KC', 'KD', 'KD', '4H', '2S']
+
 
 
 
@@ -55,8 +59,6 @@ def create_hand(deck):
 
 
 
-flush = ['AS', 'QS', '4S', '3S', '5S'] #test variable
-
 def check_flush(hand):
     first_suit = cards.identify_suit(hand[0])
     for card in hand:
@@ -64,38 +66,6 @@ def check_flush(hand):
             return False
     return True
 
-
-
-
-pHand = ['KC', 'KD', 'KD', '4H', '2S']
-
-def check_two_pair(hand):
-    """
-    iterates through hand, creates dict and stores values for number of rank appearances.
-    :param hand: a list of 5 cards
-    :return: True if there is a two pair, four of a kind, or full house
-    """
-    pairs = {}
-
-    for card in hand:
-        if card[0] not in pairs:
-            pairs[card[0]] = 0
-        pairs[card[0]] += 1
-        print(pairs)
-    for cardCount in pairs.values():
-        if cardCount >= 2:
-            print(pairs)
-            return True
-        else:
-            return False
-#returns true when it is a regular pair. need help w that
-
-print(check_two_pair(pHand))
-
-
-
-
-pairHand = ['4H', '2D', '4D', '2S', '3S'] #test variable
 
 def check_pair(hand):
     """
@@ -107,14 +77,49 @@ def check_pair(hand):
 
     for i in range(5):
         for j in range(i + 1, 5):
-            #print(cards.identify_rank(hand[i]), cards.identify_rank(hand[j]))
             if cards.identify_rank(hand[i]) != cards.identify_rank(hand[j]):
                 j += 1
 ##need to fix this to return false if there are no pairs, but return true works properly
+            #try counting pairs, if pair value is 2 or 3 then return True
             else:
                 return True
 
-print(check_pair(pairHand))
+
+pHand = ['KC', 'KD', 'KD', '4H', '3S']
+
+def check_two_pair(hand):
+    """
+    iterates through hand, creates dict and stores values for number of rank appearances.
+    :param hand: a list of 5 cards
+    :return: True if there is a two pair, four of a kind, or full house
+    """
+    if check_pair(hand) == True:
+
+        pairs = {}
+        for card in hand:
+            if card[0] not in pairs:
+                pairs[card[0]] = 0
+            pairs[card[0]] += 1
+            print(pairs)
+        for cardCount in pairs.values():
+            if cardCount >= 2:
+                del cardCount
+                if card
+                #check for another pair, if another pair present, return True
+                #check if count == 4 (return True)
+
+                print(pairs)
+                return True
+            else:
+                return False
+
+        #check if regular pair first, then if that returns False then check the rest of these tests
+#returns true when it is a regular pair. need help w that
+
+print(check_two_pair(pHand))
+
+
+#print(check_pair(pairHand))
 
 
 def check_high_card(hand):
@@ -123,7 +128,9 @@ def check_high_card(hand):
     :return:
     """
     for card in hand:
-        highestRank = 
+
+        highestRank = max(hand)
+        print(highestRank)
 
 
 
