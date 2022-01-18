@@ -79,7 +79,7 @@ pHand = ['2H', '3D', '4D', '5H', 'JD']
 
 def check_two_pair(hand):
     """
-    compare first card with second, third, fourth then fifth card
+
     :param hand: a list of 5 cards
     :return: True if there is a two pair, four of a kind, or full house
     """
@@ -96,19 +96,43 @@ def check_two_pair(hand):
 
 
 
+pairHand = ['AH', '2D', '4D', '5S', '3S'] #test variable
+
+def check_pair(hand):
+
+    """
+    checks hand, iterates one pair at a time and tries all card combinations.
+    if pair is found, returns True.
+    :param hand: hand of 5 cards (list)
+    :return: True when a pair is detected
+    """
+
+    for i in range(5):
+        for j in range(i + 1, 5):
+            print(cards.identify_rank(hand[i]), cards.identify_rank(hand[j]))
+            if cards.identify_rank(hand[i]) != cards.identify_rank(hand[j]):
+                j += 1
+##need to fix this to return false if there are no pairs, but return true works properly
+            else:
+                return True
 
 
-#def check_pair(hand):
-#    first_rank = cards.identify_rank(hand[0])
-#    for card in hand:
 
 
 def check_high_card(hand):
-    pass
+    """
+
+    :param hand: hand of 5 cards (list)
+    :return:
+    """
+    hand = hand.sort()
+    return hand
 
 
-print(deck.create_deck())
+#print(deck.create_deck())
 # print(create_hands2(shuffle_deck()))
-print(create_hands(deck.create_deck()))
-print(check_flush(flush))
-print(check_two_pair(pHand))
+#print(create_hands(deck.create_deck()))
+#print(check_flush(flush))
+#print(check_two_pair(pHand))
+#print(check_pair(pairHand))
+print(check_high_card(pairHand))
