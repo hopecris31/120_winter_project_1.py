@@ -95,7 +95,7 @@ print(check_two_pair(pHand))
 
 
 
-pairHand = ['AH', '2D', '4D', '5S', '3S'] #test variable
+pairHand = ['4H', '2D', '4D', '2S', '3S'] #test variable
 
 def check_pair(hand):
     """
@@ -114,7 +114,7 @@ def check_pair(hand):
             else:
                 return True
 
-
+print(check_pair(pairHand))
 
 
 def check_high_card(hand):
@@ -122,8 +122,9 @@ def check_high_card(hand):
     :param hand: hand of 5 cards (list)
     :return:
     """
-    hand = hand.sort()
-    return hand
+    for card in hand:
+        highestRank = 
+
 
 
 #print(deck.create_deck())
