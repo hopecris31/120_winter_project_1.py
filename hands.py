@@ -37,7 +37,7 @@ def create_hands(deck):
         end += 5
 
     return dealt_hands
-print(create_hands(d.create_deck()))
+
 
 
 def get_ranks(hand):

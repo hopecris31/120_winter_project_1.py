@@ -125,7 +125,6 @@ def play_rounds():
     """
     return table_display()
 
-#print(play_rounds())
 
 #if __name__  == "__main__":
 #    play_rounds()

@@ -18,7 +18,6 @@ def create_deck():
             deck.append(card)
     return deck
 
-#print(create_deck())
 
 def shuffle(deck):
     """
