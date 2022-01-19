@@ -6,7 +6,10 @@ import cards as c
 game_size = 100000
 interval_size = 10000
 flush_index = 0
-pair_index =
+pair2_index = 1
+pair_index = 2
+high_card_index = 3
+show_percent = 100
 
 def check_hand_type(hand):
     """
@@ -14,8 +17,6 @@ def check_hand_type(hand):
     :param hand:
     :return:
     """
-    #keep counter wherever i am running the experiment
-
 
     if h.check_flush(hand):
         return 'Flush'
@@ -32,13 +33,10 @@ def deal_round(num_rounds):
     deck = d.create_deck()
         for i in range(num_rounds):
             if d.enough_in_deck(deck):
-                rounds_played.append(check_hand_type(get_round(deck)))
+                rounds_played.append(check_hand_type(h.create_hand(deck)))
             else:
                 deck = d.create_deck()
-                rounds_played.append(check_hand_type(get_round(deck)))
-
-
-
+                rounds_played.append(check_hand_type(h.create_hand(deck)))
 
 
 
@@ -49,14 +47,18 @@ def hand_counter(hand):
     two_pair_counter = 0
     high_card_counter = 0
 
-    if h.check_hand_type(hand) == 'Flush':
-        flush_counter += 1
-    elif h.check_hand_type(hand) == 'Pair':
-        pair_counter += 1
-    elif h.check_hand_type(hand) == 'Two Pair':
-        two_pair_counter += 1
-    else:
-        high_card_counter += 1
+    for card in range(len(all_rounds)):
+        if h.check_hand_type(hand) == 'Flush':
+            flush_counter += 1
+        elif h.check_hand_type(hand) == 'Pair':
+            pair_counter += 1
+        elif h.check_hand_type(hand) == 'Two Pair':
+            two_pair_counter += 1
+        else:
+            high_card_counter += 1
+
+    won_by = [flush_counter, pair_counter, two_pair_counter, high_card_counter]
+    return won_by
 
 
 
