@@ -5,6 +5,7 @@ import cards as c
 
 sample_size = 100000
 interval_size = 10000
+first_sample = 10000
 flush_index = 0
 pair2_index = 1
 pair_index = 2
@@ -31,13 +32,13 @@ def check_hand_type(hand):
 def deal_round(num_rounds):
     rounds_played = []
     deck = d.create_deck()
-        for i in range(num_rounds):
-            if d.enough_in_deck(deck):
-                rounds_played.append(check_hand_type(h.create_hand(deck)))
-            else:
-                deck = d.create_deck()
-                rounds_played.append(check_hand_type(h.create_hand(deck)))
-        return rounds_played
+    for i in range(num_rounds):
+        if d.enough_in_deck(deck):
+            rounds_played.append(check_hand_type(h.create_hand(deck)))
+        else:
+            deck = d.create_deck()
+            rounds_played.append(check_hand_type(h.create_hand(deck)))
+    return rounds_played
 
 
 
@@ -48,12 +49,12 @@ def hand_counter(hand):
     two_pair_counter = 0
     high_card_counter = 0
 
-    for card in range(len(all_rounds)):
-        if h.check_hand_type(hand) == 'Flush':
+    for card in range(len(hand)):
+        if check_hand_type(hand) == 'Flush':
             flush_counter += 1
-        elif h.check_hand_type(hand) == 'Pair':
+        elif check_hand_type(hand) == 'Pair':
             pair_counter += 1
-        elif h.check_hand_type(hand) == 'Two Pair':
+        elif check_hand_type(hand) == 'Two Pair':
             two_pair_counter += 1
         else:
             high_card_counter += 1
@@ -61,7 +62,7 @@ def hand_counter(hand):
     won_by = [flush_counter, pair_counter, two_pair_counter, high_card_counter]
     return won_by
 
-
+print(hand_counter(h.pHand))
 def display_percent(won_by_total, index, interval):
     """
     % of total hands won by a given condition
@@ -84,7 +85,7 @@ def table_display(all_rounds):
     won_by_total = [0, 0, 0, 0]
 
     for interval in range(first_sample, sample_size +1, interval_size):
-        next_interval = categorize_hands(all_rounds[interval - interval_size: interval])
+        next_interval = check_hand_type(all_rounds[interval - interval_size: interval])
         for new_interval in range(len(won_by_total)):
             won_by_total[new_interval] += next_interval[new_interval]
 
@@ -100,9 +101,9 @@ def play_rounds():
 
     :return:
     """
-    table_display(deal_rounds(sample_size))
+    table_display(deal_round(sample_size))
 
+print(play_rounds())
 
-
-if __name__ "__main__":
-    play_rounds()
+#if __name__ "__main__":
+#    play_rounds()
