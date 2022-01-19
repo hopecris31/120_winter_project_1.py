@@ -19,7 +19,7 @@ import hands as h
 
 
 
-total_iterations = 100000
+
 first_iteration = 10000
 flush_index = 0
 pair2_index = 1
@@ -106,6 +106,7 @@ print(header)
 
 increment_size = 10000
 iteration_total = 10000
+iteration_limit = 100000
 #first interval
      #counts the number of times each hand occurs
 
@@ -120,6 +121,9 @@ for interval in range(increment_size):
     print("{:,}".format(iteration_total),'      ', "{:.2f}".format(percent_pairs),'    ', "{:.2f}".format(percent_two_pairs),
           '       ',"{:.2f}".format(percent_flushes),'       ',"{:.2f}".format(percent_high_cards))
     iteration_total += 10000 #add 10k to it for next round
+    if iteration_total >= iteration_limit +1:
+        break
+
 
 
 print(table_display)
