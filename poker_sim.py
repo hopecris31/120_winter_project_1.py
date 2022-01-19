@@ -49,27 +49,52 @@ def deal_round(num_rounds):
     return list_of_hands #list of all hand types from test hands
 
 
-print(deal_round(10))
+#print(deal_round(10))
 
 
 def hand_counter(hands_list): #param:list__of_hands, got from deal_round
+    """
+
+    :param hands_list:
+    :return:
+    """
+    #hands_list = [flush, pair, twoPair, flush, highCard]
+
+    flushes = hands_list.count('Flush')
+    two_pairs = hands_list.count('Two Pair')
+    pairs = hands_list.count('Pair')
+    high_cards = hands_list.count('High Card')
+
+    return [flushes, two_pairs, pairs, high_cards]
+
+print(hand_counter(deal_round(100)))
+
+"""
+    
     flush_counter = 0
     pair_counter = 0
     two_pair_counter = 0
     high_card_counter = 0
 
-    for card in range(len(hands_list)):
-        if check_hand_type(hands_list) == 'Flush':
-            flush_counter += 1
-        elif check_hand_type(hands_list) == 'Pair':
-            pair_counter += 1
-        elif check_hand_type(hands_list) == 'Two Pair':
-            two_pair_counter += 1
-        else:
-            high_card_counter += 1
+    for hands in range(len(hands_list)):
+        for i in range(len(hands_list)):
+            if check_hand_type(hands_list) == 'Flush':
+                flush_counter += 1
+                i+=1
+            elif check_hand_type(hands_list) == 'Pair':
+                pair_counter += 1
+                i+= 1
+            elif check_hand_type(hands_list) == 'Two Pair':
+                two_pair_counter += 1
+                i+= 1
+            else:
+                high_card_counter += 1
+                i += 1
 
-    won_by = [flush_counter, pair_counter, two_pair_counter, high_card_counter]
-    return won_by
+        won_by = [flush_counter, pair_counter, two_pair_counter, high_card_counter]
+        return won_by
+"""
+
 
 
 
