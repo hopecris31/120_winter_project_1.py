@@ -92,7 +92,7 @@ def table_display(iteration_total, iteration_limit):
     :return: a table with
     """
     pass
-header = '# of hands    pairs %    2 pairs %    flushes %    high card %'
+header = '# of hands    pairs   %    2 pairs   %    flushes   %    high card   %'
 print(header)
 
 increment_size = 10000
@@ -109,8 +109,10 @@ for interval in range(increment_size):
     percent_two_pairs = find_percent(hand_counts, 1, increment_size)
     percent_flushes = find_percent(hand_counts, 2, increment_size)
     percent_high_cards = find_percent(hand_counts, 3, increment_size)
-    print("{:,}".format(iteration_total),'      ', "{:.2f}".format(percent_pairs),'    ', "{:.2f}".format(percent_two_pairs),
-          '       ',"{:.2f}".format(percent_flushes),'       ',"{:.2f}".format(percent_high_cards))
+
+
+    print("{:,}".format(iteration_total),'            ', "{:.2f}".format(percent_pairs),'         ', "{:.2f}".format(percent_two_pairs),
+          '         ',"{:.2f}".format(percent_flushes),'          ',"{:.2f}".format(percent_high_cards))
     iteration_total += 10000 #add 10k to it for next round
     if iteration_total >= iteration_limit +1:
         break
