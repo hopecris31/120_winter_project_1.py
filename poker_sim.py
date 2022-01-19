@@ -19,14 +19,6 @@ import hands as h
 
 
 
-
-first_iteration = 10000
-flush_index = 0
-pair2_index = 1
-pair_index = 2
-high_card_index = 3
-
-
 def deal_round(num_rounds):
     """
     creates deck, makes hands
@@ -94,11 +86,10 @@ def find_percent(hand_counter_list, hand_counter_list_index, interval):
 
 
 
-def table_display():
+def table_display(iteration_total, iteration_limit):
     """
-
-    :param all_rounds:
-    :return:
+    creates a table for the percent chances of all hands
+    :return: a table with
     """
     pass
 header = '# of hands    pairs %    2 pairs %    flushes %    high card %'
@@ -126,71 +117,13 @@ for interval in range(increment_size):
 
 
 
-print(table_display)
-
-    #for hands in create_round:
-
-
-
-
-
-    #for interval in range(increment_size):
-
-
-
-
-
-
-
-
-    #for interval in range(first_iteration, total_iterations +1, increment_size): #creates testing in increments of 10k, up to 100k
-        #print(interval)
-        #next_iteration = hand_counter(all_rounds[interval - increment_size: interval])
-        ##next_interval = check_hand_type(all_rounds[interval - increment_size: interval])
-        #for new_interval in range(len(won_by_total)):
-            ##won_by_total[new_interval] = hand_counter(next_interval)
-            #print(won_by_total[new_interval])+= next_interval[new_interval]
-
-            #print(header)
-            #print(interval, won_by_total[pair_index], find_percent(won_by_total, pair2_index, interval))
-            #print(.format(interval, won_by_total[pair_index], find_percent(won_by_total, pair2_index, interval),
-                    #won_by_total[pair2_index], find_percent(won_by_total, pair2_index, interval),
-                    #won_by_total[flush_index], find_percent(won_by_total, pair2_index, interval),
-                    #won_by_total[high_card_index], find_percent(won_by_total, pair2_index, interval)))
-
-
-#'{:>10,}  {:>7.2f}{:>11}  {:05.2f}{:>11}  {:05.2f}{:>13}{:>7.2f}'
-
-            #for interval in range(first_sample, sample_size + 1, interval_size):
-
-
-"""
-#'{:>10,}{:>10,}{:>7.2f}{:>11}  {:05.2f}{:>11}  {:05.2f}{:>13}{:>7.2f}'
-
-def table_display2(all_rounds):
-    header = '# of hands    pairs %    2 pairs %    flushes %    high card %'
-    percent = find_percent((hand_counter(deal_round(interval)))
-    for interval in range(first_sample, sample_size + 1,interval_size):  # creates testing in increments of 10k, up to 100k
-        print()
-        row = [interval, find_percent((hand_counter(deal_round(interval))), 3, 10000), find_percent(won_by_total, pair2_index]
-
-    print('won_by_total: ', won_by_total, 'new_interval: ', new_interval, 'next interval: ', next_interval,
-          range(len(won_by_total)))
-    #for interval in range(first_sample, sample_size + 1, interval_size):
-    print('interval: ', interval, 'range(first_sample, sample_size +1, interval_size): ',
-          range(first_sample, sample_size + 1, interval_size))
-    print('next interval: ', next_interval)
-    
-"""
-
-
 
 def play_rounds():
     """
     starts the entire program
     :return:
     """
-    #return table_display(deal_round(increment_size))
+    return table_display()
 
 #print(play_rounds())
 
