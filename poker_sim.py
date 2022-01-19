@@ -13,6 +13,8 @@ pair_index = 2
 high_card_index = 3
 show_percent = 100
 
+
+
 def check_hand_type(hand):
     """
     :param hand: a hand of 5 cards
@@ -28,48 +30,47 @@ def check_hand_type(hand):
     else:
         return 'High Card'
 
-#print(check_hand_type(['AS', 'KS', 'QS', 'JS', '10S']))
-
-
 
 
 def deal_round(num_rounds):
     """
-    creates deck, makes hands until
+    creates deck, makes hands
     :param num_rounds: number of rounds that will be played (100k)
-    :return:
+    :return: the hands specified for the number of rounds
     """
-    rounds_played = []
+    list_of_hands = []
     deck = d.shuffle(d.create_deck()) #creates and shuffles deck
     for i in range(num_rounds):
-        if d.enough_in_deck(deck):
-            rounds_played.append(check_hand_type(h.create_hand(deck)))#adds the hand type to the list
+        if d.enough_in_deck(deck):#if there are enough cards in deck to make hand
+            list_of_hands.append(check_hand_type(h.create_hand(deck)))#checks and adds the hand type to the list
         else:
             deck = d.shuffle(d.create_deck()) #if not enough cards for new deck, create new deck
-            rounds_played.append(check_hand_type(h.create_hand(deck))) #checks hand type and adds to list
-    return rounds_played
-
-#print(deal_round(10))
+            list_of_hands.append(check_hand_type(h.create_hand(deck))) #checks and adds hand type and adds to list
+    return list_of_hands #list of all hand types from test hands
 
 
-def hand_counter(hand):
+print(deal_round(10))
+
+
+def hand_counter(hands_list): #param:list__of_hands, got from deal_round
     flush_counter = 0
     pair_counter = 0
     two_pair_counter = 0
     high_card_counter = 0
 
-    for card in range(len(hand)):
-        if check_hand_type(hand) == 'Flush':
+    for card in range(len(hands_list)):
+        if check_hand_type(hands_list) == 'Flush':
             flush_counter += 1
-        elif check_hand_type(hand) == 'Pair':
+        elif check_hand_type(hands_list) == 'Pair':
             pair_counter += 1
-        elif check_hand_type(hand) == 'Two Pair':
+        elif check_hand_type(hands_list) == 'Two Pair':
             two_pair_counter += 1
         else:
             high_card_counter += 1
 
     won_by = [flush_counter, pair_counter, two_pair_counter, high_card_counter]
     return won_by
+
 
 
 def display_percent(won_by_total, index, interval):
@@ -80,7 +81,8 @@ def display_percent(won_by_total, index, interval):
     :param interval: total number of hands to iterate through
     :return: percent of each hand
     """
-    return show_percent*(won_by_total[index]/interval) #calc %
+    #print(won_by_total[2])
+    #return show_percent*(won_by_total[index]/interval) #calc %
 
 
 
@@ -91,7 +93,7 @@ def table_display(all_rounds):
     :param all_rounds:
     :return:
     """
-    header = '# of hands pairs % 2 pairs % flushes % high card %'
+    header = '# of hands    pairs %    2 pairs %    flushes %    high card %'
     print(header)
     won_by_total = [0, 0, 0, 0]
 
@@ -107,12 +109,15 @@ def table_display(all_rounds):
                 #+= next_interval[new_interval]
 
 
+            print(header)
+            print(interval, won_by_total[pair_index], display_percent(won_by_total, pair2_index, interval))
 
-            print('{:>10,}{:>10,}{:>7.2f}{:>11}  {:05.2f}{:>11}  {:05.2f}{:>13}{:>7.2f}'
-                  .format(interval, won_by_total[pair_index], display_percent(won_by_total, pair2_index, interval),
-                    won_by_total[pair2_index], display_percent(won_by_total, pair2_index, interval),
-                    won_by_total[flush_index], display_percent(won_by_total, pair2_index, interval),
-                    won_by_total[high_card_index], display_percent(won_by_total, pair2_index, interval)))
+
+            #print('{:>10,}{:>10,}{:>7.2f}{:>11}  {:05.2f}{:>11}  {:05.2f}{:>13}{:>7.2f}'
+                  #.format(interval, won_by_total[pair_index], display_percent(won_by_total, pair2_index, interval),
+                  #  won_by_total[pair2_index], display_percent(won_by_total, pair2_index, interval),
+                  #  won_by_total[flush_index], display_percent(won_by_total, pair2_index, interval),
+                  #  won_by_total[high_card_index], display_percent(won_by_total, pair2_index, interval)))
 
 
 def play_rounds():
