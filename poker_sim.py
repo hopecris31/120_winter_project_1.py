@@ -94,31 +94,35 @@ def find_percent(hand_counter_list, hand_counter_list_index, interval):
 
 
 
-def table_display(all_rounds):
+def table_display():
     """
 
     :param all_rounds:
     :return:
     """
-    header = '# of hands    pairs %    2 pairs %    flushes %    high card %'
-    print(header)
+    pass
+header = '# of hands    pairs %    2 pairs %    flushes %    high card %'
+print(header)
 
-    increment_size = 10000  #first interval
-    create_round = deal_round(increment_size) #creates a deck and number of specified hands (10k)
-    hand_counts = hand_counter(create_round) #counts the number of times each hand occurs
+increment_size = 10000
+iteration_total = 10000
+#first interval
+     #counts the number of times each hand occurs
 
-    for interval in range(increment_size):
+for interval in range(increment_size):
+    create_round = deal_round(increment_size)  # creates a deck and number of specified hands (10k)
+    hand_counts = hand_counter(create_round)
+    find_percent(hand_counts, 0, increment_size)
+    percent_pairs = find_percent(hand_counts, 0, increment_size)
+    percent_two_pairs = find_percent(hand_counts, 1, increment_size)
+    percent_flushes = find_percent(hand_counts, 2, increment_size)
+    percent_high_cards = find_percent(hand_counts, 3, increment_size)
+    print("{:,}".format(iteration_total),'      ', "{:.2f}".format(percent_pairs),'    ', "{:.2f}".format(percent_two_pairs),
+          '       ',"{:.2f}".format(percent_flushes),'       ',"{:.2f}".format(percent_high_cards))
+    iteration_total += 10000 #add 10k to it for next round
 
-        find_percent(hand_counts, 0, increment_size)
-        percent_pairs = find_percent(hand_counts, 0, increment_size)
-        percent_two_pairs = find_percent(hand_counts, 1, increment_size)
-        percent_flushes = find_percent(hand_counts, 2, increment_size)
-        percent_high_cards = find_percent(hand_counts, 3, increment_size)
-        print(percent_pairs, percent_two_pairs, percent_flushes, percent_high_cards)
-        increment_size += increment_size #double it for next round
 
-
-
+print(table_display)
 
     #for hands in create_round:
 
