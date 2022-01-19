@@ -147,14 +147,18 @@ def check_hand_type(hand):
     :param hand:
     :return:
     """
-#use a for loop or just elif?
+    #keep counter wherever i am running the experiment
+    flush_counter = 0
+    pair_counter = 0
+    two_pair_counter = 0
+    high_card_counter = 0
 
-    if check_flush(hand) == True:
+    if check_flush(hand):
         return 'Flush'
-    elif check_pair(hand) == True:
-        return 'Pair'
-    elif check_two_pair(hand) == True
+    elif check_two_pair(hand):
         return 'Two Pair'
+    elif check_pair(hand):
+        return 'Pair'
     else:
         return 'High Card'
 
