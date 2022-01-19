@@ -18,6 +18,15 @@ flush = ['AS', 'QS', '4S', '3S', '5S'] #test variable
 pHand = ['KC', 'KD', 'KD', '4H', '2S']
 
 
+def get_ranks(hand):
+    hand_ranks = []
+
+    for card in hand:
+        rank = cards.identify_rank(card)
+        hand_ranks.append(rank)
+
+    return hand_ranks
+
 
 
 def create_hands(deck):
@@ -74,8 +83,17 @@ def check_pair(hand):
     :param hand: hand of 5 cards (list)
     :return: True when a pair or three of a kind is detected
     """
+    ranks = get_ranks(hand)
 
-    for i in range(5):
+    for card in range(len(ranks)):
+        for card_compare in range(card + 1,(len(ranks))):
+            if ranks[card] == ranks[card_compare]:
+                return True
+    return False
+
+
+
+"""
         for j in range(i + 1, 5):
             if cards.identify_rank(hand[i]) != cards.identify_rank(hand[j]):
                 j += 1
@@ -84,54 +102,47 @@ def check_pair(hand):
             else:
                 return True
 
+"""
 
-pHand = ['KC', 'KD', 'KD', '4H', '3S']
+
+pHand = ['6C', '6H', '6D', '6H', '5S']
 
 def check_two_pair(hand):
     """
     iterates through hand, creates dict and stores values for number of rank appearances.
     :param hand: a list of 5 cards
     :return: True if there is a two pair, four of a kind, or full house
+
     """
     if check_pair(hand) == True:
 
-        pairs = {}
-        for card in hand:
-            if card[0] not in pairs:
-                pairs[card[0]] = 0
-            pairs[card[0]] += 1
-            print(pairs)
-        for cardCount in pairs.values():
-            if cardCount >= 2:
-                del cardCount
-                if card
-                #check for another pair, if another pair present, return True
-                #check if count == 4 (return True)
-
-                print(pairs)
-                return True
-            else:
-                return False
+        pairs = 0
+        ranks = get_ranks(hand)
+        for card in range(len(ranks)):
+            for card_compare in range(len(ranks) - card - 1):
+                if ranks[card] == ranks[card + card_compare + 1]:
+                    pairs += 1
+                    ranks[card] = 'none'
+                    ranks[card + card_compare +1] = 'none1'
+                    if pairs == 2:
+                        return True
+    return False
 
         #check if regular pair first, then if that returns False then check the rest of these tests
 #returns true when it is a regular pair. need help w that
 
 print(check_two_pair(pHand))
+print(check_pair(pHand))
+#print(get_ranks(pHand))
 
 
 #print(check_pair(pairHand))
 
 
-def check_high_card(hand):
-    """
-    :param hand: hand of 5 cards (list)
-    :return:
-    """
-    for card in hand:
-
-        highestRank = max(hand)
-        print(highestRank)
-
+def check_hand_type(hand):
+    pass
+    #elif
+#if all return false, return high card
 
 
 #print(deck.create_deck())

@@ -8,7 +8,7 @@ def create_deck():
     :return: deck of 52 cards as list
     """
     deck = []
-    ranks = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
+    ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
     suits = ['H', 'D', 'C', 'S']
     for i in range(len(ranks)):
         for j in range(len(suits)):
