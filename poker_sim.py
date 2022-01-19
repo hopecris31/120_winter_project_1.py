@@ -92,7 +92,7 @@ def table_display(iteration_total, iteration_limit):
     :return: a table with
     """
     pass
-header = '# of hands    pairs   %    2 pairs   %    flushes   %    high card   %'
+header = '# of hands    pairs   %         2 pairs   %         flushes   %         high card   %'
 print(header)
 
 increment_size = 10000
@@ -105,14 +105,24 @@ for interval in range(increment_size):
     create_round = deal_round(increment_size)  # creates a deck and number of specified hands (10k)
     hand_counts = hand_counter(create_round)
     find_percent(hand_counts, 0, increment_size)
+
+    num_pairs = hand_counts[0]
     percent_pairs = find_percent(hand_counts, 0, increment_size)
+
+    num_two_pairs = hand_counts[1]
     percent_two_pairs = find_percent(hand_counts, 1, increment_size)
+
+    num_flushes = hand_counts[2]
     percent_flushes = find_percent(hand_counts, 2, increment_size)
+
+    num_high_cards = hand_counts[3]
     percent_high_cards = find_percent(hand_counts, 3, increment_size)
 
 
-    print("{:,}".format(iteration_total),'            ', "{:.2f}".format(percent_pairs),'         ', "{:.2f}".format(percent_two_pairs),
-          '         ',"{:.2f}".format(percent_flushes),'          ',"{:.2f}".format(percent_high_cards))
+    print("{:,}".format(iteration_total), '    ', "{:,}".format(num_pairs),' ', "{:.2f}".format(percent_pairs), '       '
+          "{:,}".format(num_two_pairs),'   ', "{:.2f}".format(percent_two_pairs), '        '
+          "{:,}".format(num_flushes),'   ', "{:.2f}".format(percent_flushes),'   ',
+          "{:,}".format(num_pairs), '     ', "{:.2f}".format(percent_high_cards))
     iteration_total += 10000 #add 10k to it for next round
     if iteration_total >= iteration_limit +1:
         break
