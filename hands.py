@@ -54,8 +54,8 @@ def create_hand(deck):
 
 
 
-print(create_hands(d.shuffle(d.create_deck())))
-print(create_hand(d.shuffle(d.create_deck())))
+#print(create_hands(d.shuffle(d.create_deck())))
+#print(create_hand(d.shuffle(d.create_deck())))
 
 
 
@@ -87,7 +87,7 @@ def check_pair(hand):
 
 
 
-pHand = ['6C', '6H', '6D', '3H', '5S']
+#pHand = ['6C', '6H', '6D', '3H', '5S']
 
 def check_two_pair(hand):
     """
@@ -113,8 +113,8 @@ def check_two_pair(hand):
         #check if regular pair first, then if that returns False then check the rest of these tests
 #returns true when it is a regular pair. need help w that
 
-print(check_two_pair(pHand))
-print(check_pair(pHand))
+#print(check_two_pair(pHand))
+#print(check_pair(pHand))
 
 
 

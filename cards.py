@@ -26,4 +26,4 @@ def identify_suit(card):
     """
     return card[-1]
 
-print(identify_rank('14S'))
+#print(identify_rank('14S'))
