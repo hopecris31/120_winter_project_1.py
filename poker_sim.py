@@ -119,10 +119,11 @@ for interval in range(increment_size):
     percent_high_cards = find_percent(hand_counts, 3, increment_size)
 
 
-    print("{:,}".format(iteration_total), '    ', "{:,}".format(num_pairs),' ', "{:.2f}".format(percent_pairs), '       '
+    print("{:,}".format(iteration_total), '    ',
+          "{:,}".format(num_pairs),' ', "{:.2f}".format(percent_pairs), '       '
           "{:,}".format(num_two_pairs),'   ', "{:.2f}".format(percent_two_pairs), '        '
           "{:,}".format(num_flushes),'   ', "{:.2f}".format(percent_flushes),'     ',
-          "{:,}".format(num_pairs), '     ', "{:.2f}".format(percent_high_cards))
+          "{:,}".format(num_pairs), '   ', "{:.2f}".format(percent_high_cards))
     iteration_total += 10000 #add 10k to it for next round
     if iteration_total >= iteration_limit +1:
         break
