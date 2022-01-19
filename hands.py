@@ -1,6 +1,6 @@
 
 import cards
-import deck
+import deck as d
 
 """
 flush =
@@ -52,6 +52,7 @@ def create_hands(deck):
 
 
 
+
 def create_hand(deck):
     """
     :param deck:
@@ -61,11 +62,12 @@ def create_hand(deck):
     dealt_cards = []
 
     for index in range(0,5):
-        dealt_cards.append(deck[index]) #dealing individual cards
+        dealt_cards.append(deck.pop(0)) #remove dealt cards and add to list
 
     return dealt_cards
 
-
+print(create_hands(d.shuffle(d.create_deck())))
+print(create_hand(d.shuffle(d.create_deck())))
 
 
 def check_flush(hand):
@@ -140,7 +142,25 @@ print(check_pair(pHand))
 
 
 def check_hand_type(hand):
-    pass
+    """
+
+    :param hand:
+    :return:
+    """
+#use a for loop or just elif?
+
+    if check_flush(hand) == True:
+        return 'Flush'
+    elif check_pair(hand) == True:
+        return 'Pair'
+    elif check_two_pair(hand) == True
+        return 'Two Pair'
+    else:
+        return 'High Card'
+
+
+
+
     #elif
 #if all return false, return high card
 
