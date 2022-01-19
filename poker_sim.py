@@ -49,7 +49,7 @@ def deal_round(num_rounds):
             rounds_played.append(check_hand_type(h.create_hand(deck))) #checks hand type and adds to list
     return print(rounds_played)
 
-#print(deal_round(10000))
+print(deal_round(10))
 
 
 def hand_counter(hand):
@@ -94,11 +94,11 @@ def table_display(all_rounds):
     won_by_total = [0, 0, 0, 0]
 
     for interval in range(first_sample, sample_size +1, interval_size):
-        print('interval: ',interval, 'range(first_sample, sample_size +1, interval_size): ', range(first_sample, sample_size +1, interval_size))
+        #print('interval: ',interval, 'range(first_sample, sample_size +1, interval_size): ', range(first_sample, sample_size +1, interval_size))
         next_interval = check_hand_type(all_rounds[interval - interval_size: interval])
-        print('next interval: ', next_interval)
+        #print('next interval: ', next_interval)
         for new_interval in range(len(won_by_total)):
-            print('won_by_total: ', won_by_total, 'new_interval: ', new_interval, 'next interval: ', next_interval, range(len(won_by_total)))
+            #print('won_by_total: ', won_by_total, 'new_interval: ', new_interval, 'next interval: ', next_interval, range(len(won_by_total)))
             won_by_total[new_interval] += next_interval[new_interval]
 
 
@@ -117,7 +117,7 @@ def play_rounds():
     """
     return table_display(deal_round(sample_size))
 
-#print(play_rounds())
+print(play_rounds())
 
 #if __name__  == "__main__":
 #    play_rounds()

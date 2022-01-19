@@ -61,7 +61,7 @@ print(create_hand(d.shuffle(d.create_deck())))
 
 
 def check_flush(hand):
-    first_suit = cards.identify_suit(hand[len-1])
+    first_suit = cards.identify_suit(hand[0])
     for card in hand:
         if first_suit != cards.identify_suit(card):
             return False
@@ -87,7 +87,7 @@ def check_pair(hand):
 
 
 
-pHand = ['6C', '6H', '6D', '6H', '5S']
+pHand = ['6C', '6H', '6D', '3H', '5S']
 
 def check_two_pair(hand):
     """
