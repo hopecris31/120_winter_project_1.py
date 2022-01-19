@@ -61,7 +61,7 @@ print(create_hand(d.shuffle(d.create_deck())))
 
 
 def check_flush(hand):
-    first_suit = cards.identify_suit(hand[0])
+    first_suit = cards.identify_suit(hand[len-1])
     for card in hand:
         if first_suit != cards.identify_suit(card):
             return False

@@ -14,11 +14,16 @@ def identify_rank(card):
     :param card: a card (string) with a rank and suit
     :return: rank
     """
-    return card[0]
+    if len(card) == 3:
+        return card[0:2]
+    else:
+        return card[0]
 
 def identify_suit(card):
     """
     :param card: a card (string) with a rank and suit
     :return: suit
     """
-    return card[1]
+    return card[-1]
+
+print(identify_rank('14S'))
