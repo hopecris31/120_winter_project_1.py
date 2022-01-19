@@ -121,8 +121,8 @@ for interval in range(increment_size):
 
     print("{:,}".format(iteration_total), '    ',
           "{:,}".format(num_pairs),' ', "{:.2f}".format(percent_pairs), '       '
-          "{:,}".format(num_two_pairs),'   ', "{:.2f}".format(percent_two_pairs), '        '
-          "{:,}".format(num_flushes),'   ', "{:.2f}".format(percent_flushes),'     ',
+          "{:,}".format(num_two_pairs),'  ', '0' + "{:.2f}".format(percent_two_pairs), '        '
+          "{:,}".format(num_flushes),'  ', '0' + "{:.2f}".format(percent_flushes),'     ',
           "{:,}".format(num_pairs), '   ', "{:.2f}".format(percent_high_cards))
     iteration_total += 10000 #add 10k to it for next round
     if iteration_total >= iteration_limit +1:
