@@ -98,10 +98,13 @@ def table_display(all_rounds):
     for interval in range(first_sample, sample_size +1, interval_size): #creates testing in increments of 10k, up to 100k
         #print('interval: ',interval, 'range(first_sample, sample_size +1, interval_size): ', range(first_sample, sample_size +1, interval_size))
         next_interval = check_hand_type(all_rounds[interval - interval_size: interval])
-        print('next interval: ', next_interval)
+        #print('next interval: ', next_interval)
         for new_interval in range(len(won_by_total)):
-            print('won_by_total: ', won_by_total, 'new_interval: ', new_interval, 'next interval: ', next_interval, range(len(won_by_total)))
-            won_by_total[new_interval] += next_interval[new_interval]
+            #print('won_by_total: ', won_by_total, 'new_interval: ', new_interval, 'next interval: ', next_interval, range(len(won_by_total)))
+            won_by_total[new_interval] = hand_counter(next_interval)
+            #print(won_by_total[new_interval])
+
+                #+= next_interval[new_interval]
 
 
 
