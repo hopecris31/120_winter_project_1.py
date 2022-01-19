@@ -11,7 +11,6 @@ flush_index = 0
 pair2_index = 1
 pair_index = 2
 high_card_index = 3
-show_percent = 100
 
 
 
@@ -49,7 +48,7 @@ def deal_round(num_rounds):
     return list_of_hands #list of all hand types from test hands
 
 
-#print(deal_round(10))
+#print(deal_round(100))
 
 
 def hand_counter(hands_list): #param:list__of_hands, got from deal_round
@@ -67,48 +66,16 @@ def hand_counter(hands_list): #param:list__of_hands, got from deal_round
 
     return [flushes, two_pairs, pairs, high_cards]
 
-print(hand_counter(deal_round(100)))
-
-"""
-    
-    flush_counter = 0
-    pair_counter = 0
-    two_pair_counter = 0
-    high_card_counter = 0
-
-    for hands in range(len(hands_list)):
-        for i in range(len(hands_list)):
-            if check_hand_type(hands_list) == 'Flush':
-                flush_counter += 1
-                i+=1
-            elif check_hand_type(hands_list) == 'Pair':
-                pair_counter += 1
-                i+= 1
-            elif check_hand_type(hands_list) == 'Two Pair':
-                two_pair_counter += 1
-                i+= 1
-            else:
-                high_card_counter += 1
-                i += 1
-
-        won_by = [flush_counter, pair_counter, two_pair_counter, high_card_counter]
-        return won_by
-"""
+#print(hand_counter(deal_round(100)))
 
 
 
+def find_percent(hand_counter_list, hand_counter_list_index, interval):
+    percent = (hand_counter_list[hand_counter_list_index]/interval)*100
+    return percent
 
-def display_percent(won_by_total, index, interval):
-    """
-    % of total hands won by a given condition
-    :param won_by_total: list with totals of each hand
-    :param index: index of the win hand you want
-    :param interval: total number of hands to iterate through
-    :return: percent of each hand
-    """
-    #print(won_by_total[2])
-    #return show_percent*(won_by_total[index]/interval) #calc %
 
+print(find_percent((hand_counter(deal_round(10))), 2, 10000))
 
 
 
@@ -143,6 +110,22 @@ def table_display(all_rounds):
                   #  won_by_total[pair2_index], display_percent(won_by_total, pair2_index, interval),
                   #  won_by_total[flush_index], display_percent(won_by_total, pair2_index, interval),
                   #  won_by_total[high_card_index], display_percent(won_by_total, pair2_index, interval)))
+
+"""
+#def display_percent(won_by_total, index, interval):
+
+        % of total hands won by a given condition
+        :param won_by_total: list with totals of each hand
+        :param index: index of the win hand you want
+        :param interval: total number of hands to iterate through
+        :return: percent of each hand
+
+#    print(won_by_total[2])
+#    return show_percent*(won_by_total[index]/interval) #calc %
+
+"""
+
+
 
 
 def play_rounds():
