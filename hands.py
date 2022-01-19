@@ -2,20 +2,6 @@
 import cards
 import deck as d
 
-"""
-flush =
-#flush, straight flush, royal flush
-two_pair =
-#two pair, four of a kind, full house
-pair =
-#pair, three of a kind
-high_card =
-#high card, straight
-"""
-
-pairHand = ['4H', '2D', '4D', 'KS', 'AS'] #test variable
-flush = ['AS', 'QS', '4S', '3S', '5S'] #test variable
-pHand = ['KC', 'KD', 'KD', '4H', '2S']
 
 
 def get_ranks(hand):
@@ -66,8 +52,12 @@ def create_hand(deck):
 
     return dealt_cards
 
+
+
 print(create_hands(d.shuffle(d.create_deck())))
 print(create_hand(d.shuffle(d.create_deck())))
+
+
 
 
 def check_flush(hand):
@@ -95,16 +85,6 @@ def check_pair(hand):
 
 
 
-"""
-        for j in range(i + 1, 5):
-            if cards.identify_rank(hand[i]) != cards.identify_rank(hand[j]):
-                j += 1
-##need to fix this to return false if there are no pairs, but return true works properly
-            #try counting pairs, if pair value is 2 or 3 then return True
-            else:
-                return True
-
-"""
 
 
 pHand = ['6C', '6H', '6D', '6H', '5S']
@@ -135,38 +115,7 @@ def check_two_pair(hand):
 
 print(check_two_pair(pHand))
 print(check_pair(pHand))
-#print(get_ranks(pHand))
 
-
-#print(check_pair(pairHand))
-
-
-def check_hand_type(hand):
-    """
-
-    :param hand:
-    :return:
-    """
-    #keep counter wherever i am running the experiment
-    flush_counter = 0
-    pair_counter = 0
-    two_pair_counter = 0
-    high_card_counter = 0
-
-    if check_flush(hand):
-        return 'Flush'
-    elif check_two_pair(hand):
-        return 'Two Pair'
-    elif check_pair(hand):
-        return 'Pair'
-    else:
-        return 'High Card'
-
-
-
-
-    #elif
-#if all return false, return high card
 
 
 #print(deck.create_deck())

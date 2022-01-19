@@ -2,6 +2,8 @@
 import random
 import cards
 
+hand_size = 5
+
 def create_deck():
     """
     creates a deck of cards by combining one of each rank and suit
@@ -28,3 +30,9 @@ def shuffle(deck):
     return deck
 
 
+def enough_in_deck(deck):
+    if len(deck) >= hand_size:
+        enough = True
+    else:
+        enough = False
+    return enough
