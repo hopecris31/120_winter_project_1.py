@@ -31,6 +31,11 @@ def shuffle(deck):
 
 
 def enough_in_deck(deck):
+    """
+    checks if there are enough cards in the deck to make another hand
+    :param deck: a list of cards
+    :return: True or False, depending of if there are enough cards
+    """
     if len(deck) >= hand_size:
         enough = True
     else:

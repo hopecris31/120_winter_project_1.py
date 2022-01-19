@@ -2,16 +2,19 @@
 import cards
 import deck as d
 
+def create_hand(deck):
+    """
+    creates a hand from a deck
+    :param deck: a deck of cards
+    :return: a hand of 5 cards
+    """
 
+    dealt_cards = []
 
-def get_ranks(hand):
-    hand_ranks = []
+    for index in range(0,5):
+        dealt_cards.append(deck.pop(0)) #remove dealt cards and add to list
 
-    for card in hand:
-        rank = cards.identify_rank(card)
-        hand_ranks.append(rank)
-
-    return hand_ranks
+    return dealt_cards
 
 
 
@@ -34,38 +37,33 @@ def create_hands(deck):
         end += 5
 
     return dealt_hands
+print(create_hands(d.create_deck()))
 
 
+def get_ranks(hand):
+    hand_ranks = []
 
+    for card in hand:
+        rank = cards.identify_rank(card)
+        hand_ranks.append(rank)
 
-
-def create_hand(deck):
-    """
-    :param deck:
-    :return:
-    """
-
-    dealt_cards = []
-
-    for index in range(0,5):
-        dealt_cards.append(deck.pop(0)) #remove dealt cards and add to list
-
-    return dealt_cards
-
-
-
-#print(create_hands(d.shuffle(d.create_deck())))
-#print(create_hand(d.shuffle(d.create_deck())))
+    return hand_ranks
 
 
 
 
 def check_flush(hand):
+    """
+    checks if the card hand is a flush
+    :param hand: a hand of 5 cards
+    :return: True if all card suits match, False if not
+    """
     first_suit = cards.identify_suit(hand[0])
     for card in hand:
         if first_suit != cards.identify_suit(card):
             return False
     return True
+
 
 
 def check_pair(hand):
@@ -85,9 +83,6 @@ def check_pair(hand):
 
 
 
-
-
-#pHand = ['6C', '6H', '6D', '3H', '5S']
 
 def check_two_pair(hand):
     """
@@ -109,19 +104,3 @@ def check_two_pair(hand):
                     if pairs == 2:
                         return True
     return False
-
-        #check if regular pair first, then if that returns False then check the rest of these tests
-#returns true when it is a regular pair. need help w that
-
-#print(check_two_pair(pHand))
-#print(check_pair(pHand))
-
-
-
-#print(deck.create_deck())
-# print(create_hands2(shuffle_deck()))
-#print(create_hands(deck.create_deck()))
-#print(check_flush(flush))
-#print(check_two_pair(pHand))
-#print(check_pair(pairHand))
-#print(check_high_card(pairHand))
