@@ -3,7 +3,7 @@ import deck as d
 import hands as h
 import cards as c
 
-game_size = 100000
+sample_size = 100000
 interval_size = 10000
 flush_index = 0
 pair2_index = 1
@@ -37,6 +37,7 @@ def deal_round(num_rounds):
             else:
                 deck = d.create_deck()
                 rounds_played.append(check_hand_type(h.create_hand(deck)))
+        return rounds_played
 
 
 
@@ -61,13 +62,47 @@ def hand_counter(hand):
     return won_by
 
 
+def display_percent(won_by_total, index, interval):
+    """
+    % of total hands won by a given condition
+    :param won_by_total: list with totals of each hand
+    :param index: index of the win hand you want
+    :param interval: total number of hands to iterate through
+    :return: percent of each hand
+    """
+    return show_percent*(won_by_total[index]/interval) #calc %
+
+
+def table_display(all_rounds):
+    """
+
+    :param all_rounds:
+    :return:
+    """
+    header = '# of hands pairs % 2 pairs % flushes % high card %'
+    print(header)
+    won_by_total = [0, 0, 0, 0]
+
+    for interval in range(first_sample, sample_size +1, interval_size):
+        next_interval = categorize_hands(all_rounds[interval - interval_size: interval])
+        for new_interval in range(len(won_by_total)):
+            won_by_total[new_interval] += next_interval[new_interval]
+
+            print('{:>10,}{:>10,}{:>7.2f}{:>11}  {:05.2f}{:>11}  {:05.2f}{:>13}{:>7.2f}'
+                  .format(interval, won_by_total[pair_index], display_percent(won_by_total, pair2_index, interval),
+                    won_by_total[pair2_index], display_percent(won_by_total, pair2_index, interval),
+                    won_by_total[flush_index], display_percent(won_by_total, pair2_index, interval),
+                    won_by_total[high_card_index], display_percent(won_by_total, pair2_index, interval)))
 
 
 def play_rounds():
-    #create deck
-    #shuffle
-    #create hands
-    #identify each card hand
-    #add card
+    """
 
-    pass
+    :return:
+    """
+    table_display(deal_rounds(sample_size))
+
+
+
+if __name__ "__main__":
+    play_rounds()
